@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let isSwiping = false;
         let startX = 0;
         let currentTranslate = 0;
+        let instructionHidden = false;
 
         const envelopeWrapper = document.createElement('div');
         envelopeWrapper.className = 'envelope-wrapper';
@@ -28,7 +29,10 @@ document.addEventListener('DOMContentLoaded', () => {
         navDots.className = 'nav-dots';
         const instruction = document.createElement('div');
         instruction.className = 'instruction-letter';
-        instruction.textContent = 'Tap the letter to open';
+        instruction.textContent = 'Tap to open';
+        const swipeInstruction = document.createElement('div');
+        swipeInstruction.className = 'swipe-instruction';
+        swipeInstruction.textContent = '<< Swipe >>';
 
         for (let i = 0; i < totalPages; i++) {
             const page = document.createElement('div');
@@ -39,7 +43,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const dot = document.createElement('div');
             dot.className = 'dot';
             if (i === 0) dot.classList.add('active');
-            dot.addEventListener('click', (e) => { e.stopPropagation(); goToPage(i); });
+            dot.addEventListener('click', (e) => {
+                e.stopPropagation();
+                goToPage(i);
+            });
             navDots.appendChild(dot);
         }
 
@@ -48,15 +55,23 @@ document.addEventListener('DOMContentLoaded', () => {
         envelope.appendChild(front);
         envelope.appendChild(flap);
         
-        // This is the key fix: Assemble as SIBLINGS, not parent-child
         envelopeWrapper.appendChild(letterViewport); 
         envelopeWrapper.appendChild(envelope);
         envelopeWrapper.appendChild(instruction);
         envelopeWrapper.appendChild(navDots);
+        envelopeWrapper.appendChild(swipeInstruction);
         
         document.body.appendChild(envelopeWrapper);
 
+        function hideSwipeInstruction() {
+            if (!instructionHidden) {
+                swipeInstruction.classList.remove('visible');
+                instructionHidden = true;
+            }
+        }
+
         function goToPage(pageIndex) {
+            hideSwipeInstruction();
             if (pageIndex < 0 || pageIndex >= totalPages) return;
             currentPage = pageIndex;
             const letterWidth = letterViewport.getBoundingClientRect().width;
@@ -66,8 +81,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 dot.classList.toggle('active', index === currentPage);
             });
         }
-
-        const handleSwipeStart = (e) => { isSwiping = true; startX = e.type.includes('mouse') ? e.pageX : e.touches[0].clientX; letterTrack.style.transition = 'none'; };
+        
+        const handleSwipeStart = (e) => { 
+            hideSwipeInstruction();
+            isSwiping = true; 
+            startX = e.type.includes('mouse') ? e.pageX : e.touches[0].clientX; 
+            letterTrack.style.transition = 'none'; 
+        };
         const handleSwipeMove = (e) => { if (!isSwiping) return; const currentX = e.type.includes('mouse') ? e.pageX : e.touches[0].clientX; const diff = currentX - startX; letterTrack.style.transform = `translateX(${currentTranslate + diff}px)`; };
         const handleSwipeEnd = (e) => {
             if (!isSwiping) return;
@@ -98,6 +118,11 @@ document.addEventListener('DOMContentLoaded', () => {
         envelopeWrapper.addEventListener('click', () => {
             if (!envelopeWrapper.classList.contains('open')) {
                 envelopeWrapper.classList.add('open');
+                
+                setTimeout(() => {
+                    swipeInstruction.classList.add('visible');
+                    setTimeout(hideSwipeInstruction, 4000);
+                }, 1800);
             }
         });
 
@@ -107,10 +132,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const observer = new MutationObserver((mutations) => {
         mutations.forEach(mutation => {
             if (mutation.attributeName === 'class' && document.body.classList.contains('blown-out')) {
-                const cakeContainer = document.querySelector('.cake-container');
-                cakeContainer.style.transition = 'transform 1s ease-in';
-                cakeContainer.style.transform = 'translateY(150vh)';
-                setTimeout(showEnvelope, 1000); 
+                setTimeout(() => {
+                    const cakeContainer = document.querySelector('.cake-container');
+                    cakeContainer.style.transition = 'transform 1s ease-in';
+                    cakeContainer.style.transform = 'translateY(150vh)';
+                    setTimeout(showEnvelope, 1000); 
+                }, 5000); 
+
                 observer.disconnect();
             }
         });
