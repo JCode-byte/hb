@@ -3,29 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Birthday Cake</title>
-    <link rel="stylesheet" href="css/hb.css">
-    <link rel="stylesheet" href="css/envelope.css">
+    <title>Birthday ni Potpot ngayon!</title>
+    <link rel="stylesheet" href="hb.css">
+    <link rel="stylesheet" href="envelope.css">
 </head>
 <body>
 
     <!-- This hidden container holds all the page content for the letter -->
     <div class="letter-content-source">
         <div class="page-content">
-            <p style="font-size: 2em; font-weight: bold;"> Happy Birthday POTPOT!🥳 </p>
+            <p style="font-size: 1.5em; font-weight: bold;">Happy Birthday Katrina Angela S. Del Mundo!🥳</p>
         </div>
-        <div class="page-content"><p>Wishing you a day filled with joy and laughter.</p></div>
-        <div class="page-content"><p>May all your dreams and wishes come true this year.</p></div>
-        <div class="page-content"><p>Remember that awesome time we... (insert memory here)?</p></div>
-        <div class="page-content"><p>Here's to another year of great adventures!</p></div>
-        <div class="page-content"><p>You're not getting older, you're just increasing in value!</p></div>
-        <div class="page-content"><p>Hope your birthday is as amazing as you are.</p></div>
-        <div class="page-content"><p>Cheers to you on your special day!</p></div>
-        <div class="page-content"><p>Sending you all the love in the world.</p></div>
-        <div class="page-content"><p>Happy Birthday! Let's celebrate soon.</p></div>
+         <!-- --- NEW: PAGE WITH TWO PICTURES --- -->
+        <div class="page-content photo-page">
+            <!-- CORRECTED: Image paths are now direct file names -->
+            <img src="hb/2.jpg" alt="A memorable photo" class="photo1">
+            <img src="hb/4.jpg" alt="Another fun memory" class="photo2">
+        </div>
+        <div class="page-content"><p>Hapi birtdey Kattttt!!! stay happy, hoope daghan pata bondings mahimu. <br> <br> - Ange</p></div>
+        <div class="page-content"><p>Happy Birthday Kat!!! <br> <br>- Cristine</p></div>
+        <div class="page-content"><p style="font-size: .80em;">happy birthday potpottt! nakss 19 kanaa beh, tigulangg na jud HAHAHAHHA, pero anyways, wala naman koy ma wish oy basta all the best nlng hehe, more birthdays to come and always be happy beh maskin naa na kay happiness, stayyy stronggg mo ha and good luck sa college journey mo, if may problema kaaa, andito lng kame para dumagdag sa problema mo char, basta beh here lng kame for youu and prouddd sayooo alwaysss. we love you sm, enjoyyy yourr day mwaaaaa! 😘😘😘😘🥳🥳🥳🥳<br> <br>- Janelle</p></div>
+        <div class="page-content"><p>Happy birthday Kat! last teen mo na ito kse next year 20 kana HAHAHA mag birthday kana lang d parin natuloy yung outing natin jusq foe HAHA, pag may iniisip ka na probs wag mo nalang isipin, chrs. May God bless you, guide you and give you strength to fight all the challenges in life. Enjoy your day, loveyou!🫶<br> <br>- Divine</p></div>
+        <div class="page-content"><p>Happy birthday, Kat! Happy happy birthday! Sana maraming core memories ang mangyari sa special day mo (if 12:00 man to), puno nang smiles, tawanan, lahat-lahat. I hope your heart will be filled with love that u can cherish all your life. Happy birthday, kat!! 💝🎂🥳 <br> <br>- Annica</p></div>
+        <div class="page-content"><p>Happy Birthday Kat! Sorry medyo boring 'to at pangit yung website tinatamad ako magisip HAHA. Happy birthday, 19 na jud ka nadungagan na ang imong edad pero ang imong height wala pa😏. char unta daghan pata mga memories na mahimo and sana makaligo na ta ug dagat. Yun lang enjoy sa imo birthday!! <br> <br>- ako
+        </p></div>
+        <div class="page-content"><p style="font-size: .90em;">🎉Happy 19th Birthday, Katrina! 🎂
+You're now legally old enough to make adult decisions… and still young enough to regret them instantly. 😅
+May your heart be full, your cake be big, and your data never run out. 📱🎂
+Hope your day is filled with joy, laughter, and people who actually reply fast — unlike your group chats. 😂
+Have a blast, you 19-year-old legend! 🥳💖 <br> <br>- Chatgpt (trip ko lang)</p></div>
+         <!-- --- NEW: PAGE WITH TWO PICTURES --- -->
+        <div class="page-content photo-page">
+            <!-- CORRECTED: Image paths are now direct file names -->
+            <img src="hb/1.jpg" alt="A memorable photo" class="photo1">
+            <img src="hb/3.jpg" alt="Another fun memory" class="photo2">
+        </div>
     </div>
 
     <div class="cake-container" id="cakeContainer">
+        <!-- NEW: Message that appears after blowing out candles -->
+        <div class="wish-message">
+            <p>Happy 19th Birthday Potpot!</p>
+            <p>May all your dreams and wishes come true this year.</p>
+        </div>
+
         <div class="plate"></div>
         <div class="cake">
             <div class="layer layer-bottom"></div>
@@ -43,9 +64,9 @@
         </div>
     </div>
     
-    <div class="instruction">Tap the cake to make a wish!</div>
+    <div class="instruction">Tap the cake and make a wish!</div>
 
-    <script src="js/hb.js"></script>
-    <script src="js/envelope.js"></script>
+    <script src="hb.js"></script>
+    <script src="envelope.js"></script>
 </body>
-</html>
+</html> 
