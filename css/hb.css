@@ -83,6 +83,6 @@ body {
     body::before {
         /* We use a new SVG tile that is more square and has smaller text,
            which looks better on a narrow, vertical phone screen. */
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='250'%3E%3Cg transform='rotate(-30 125 125)'%3E%3Ctext x='50%25' y='50%25' font-family='Courier New, monospace' font-size='16' fill='%2377' opacity='0.4' text-anchor='middle' dominant-baseline='middle'%3EHappy Birthday%3C/text%3E%3C/g%3E%3C/svg%3E");
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cg transform='rotate(-30 125 125)'%3E%3Ctext x='50%25' y='50%25' font-family='Courier New, monospace' font-size='16' fill='%2377' opacity='0.4' text-anchor='middle' dominant-baseline='middle'%3EHappy Birthday%3C/text%3E%3C/g%3E%3C/svg%3E");
     }
 }   
