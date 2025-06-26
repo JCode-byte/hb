@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Birthday Cake</title>
+    <link rel="stylesheet" href="hb.css">
+    <link rel="stylesheet" href="envelope.css">
+</head>
+<body>
+
+    <!-- This hidden container holds all the page content for the letter -->
+    <div class="letter-content-source">
+        <div class="page-content">
+            <p style="font-size: 2em; font-weight: bold;"> Happy Birthday POTPOT!🥳 </p>
+        </div>
+        <div class="page-content"><p>Wishing you a day filled with joy and laughter.</p></div>
+        <div class="page-content"><p>May all your dreams and wishes come true this year.</p></div>
+        <div class="page-content"><p>Remember that awesome time we... (insert memory here)?</p></div>
+        <div class="page-content"><p>Here's to another year of great adventures!</p></div>
+        <div class="page-content"><p>You're not getting older, you're just increasing in value!</p></div>
+        <div class="page-content"><p>Hope your birthday is as amazing as you are.</p></div>
+        <div class="page-content"><p>Cheers to you on your special day!</p></div>
+        <div class="page-content"><p>Sending you all the love in the world.</p></div>
+        <div class="page-content"><p>Happy Birthday! Let's celebrate soon.</p></div>
+    </div>
+
+    <div class="cake-container" id="cakeContainer">
+        <div class="plate"></div>
+        <div class="cake">
+            <div class="layer layer-bottom"></div>
+            <div class="layer layer-middle"></div>
+            <div class="layer layer-top"></div>
+            <div class="icing"></div>
+            <div class="candles" id="candlesContainer">
+                <div class="number-candle one">
+                    <div class="flame"></div><div class="smoke"></div>
+                </div>
+                <div class="number-candle nine">
+                    <div class="flame"></div><div class="smoke"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="instruction">Tap the cake to make a wish!</div>
+
+    <script src="hb.js"></script>
+    <script src="envelope.js"></script>
+</body>
+</html>
