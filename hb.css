@@ -1,0 +1,181 @@
+
+:root {
+    --vanilla: #f0e4d0;
+    --chocolate: #553c13;
+    --candle-red: #7B020B;
+    --present-red: #d92027;
+    --present-gold: #fbc531;
+    --initial-bg: #333;
+}
+
+body {
+    background-color: var(--initial-bg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    font-family: 'Courier New', Courier, monospace;
+    transition: background-color 1s ease;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='120'%3E%3Cg transform='rotate(-30 150 60)'%3E%3Ctext x='50%25' y='50%25' font-family='Courier New, monospace' font-size='20' fill='%23777' opacity='0.4' text-anchor='middle' dominant-baseline='middle'%3EHappy Birthday%3C/text%3E%3C/g%3E%3C/svg%3E");
+    background-repeat: repeat;
+    transition: opacity 1s ease;
+}
+
+body.fireworks-active::before {
+    opacity: 0;
+}
+
+.instruction {
+    color: #ccc;
+    text-align: center;
+    transition: opacity 0.5s;
+    white-space: nowrap;
+    position: absolute;
+    bottom: 20%;
+    z-index: 100;
+}
+
+.cake-container {
+    position: absolute;
+    cursor: pointer;
+    transition: transform 1.5s ease-in, opacity 1s ease-in;
+}
+
+.cake-container.hidden {
+    opacity: 0;
+    transform: translateY(150vh);
+    pointer-events: none;
+}
+
+.cake { 
+    position: relative; 
+    width: 250px; 
+    height: 200px; 
+}
+
+.plate { 
+    width: 270px;
+    height: 110px; 
+    position: absolute; 
+    bottom: -5px; 
+    left: -10px; 
+    background-color: #ccc; 
+    border-radius: 50%; 
+    box-shadow: 0 2px 0 #b3b3b3, 0 4px 0 #b3b3b3, 0 5px 40px rgba(0, 0, 0, 0.5); 
+}
+
+.cake > * { 
+    position: absolute; 
+}
+
+.layer { 
+    display: block; 
+    width: 250px; 
+    height: 100px; 
+    border-radius: 50%; 
+    background-color: var(--chocolate); 
+    box-shadow: 0 2px 0px #644b20, 0 4px 0px #412e0e, 0 6px 0px #402d0d, 0 8px 0px #3f2d0c, 0 10px 0px #3e2c0b, 0 12px 0px #3c2b0a, 0 14px 0px #3b2a09, 0 16px 0px #3a2908, 0 18px 0px #392807, 0 20px 0px #382706, 0 22px 0px #362605, 0 24px 0px #352504, 0 26px 0px #342403, 0 28px 0px #322302, 0 30px 0px #312201; 
+}
+
+.layer-top { top: 0px; }
+.layer-middle { top: 33px; }
+.layer-bottom { top: 66px; }
+
+.icing { 
+    top: 2px; 
+    left: 5px; 
+    background-color: var(--vanilla); 
+    width: 240px; 
+    height: 90px; 
+    border-radius: 50%; 
+    z-index: 2; 
+}
+
+.icing:before { 
+    content: ""; 
+    position: absolute; 
+    top: 4px; right: 5px; 
+    bottom: 6px; left: 5px; 
+    background-color: #f6f0e6; 
+    box-shadow: 0 0 4px #f8f5ef, 0 0 4px #f8f5ef, 0 0 4px #f8f5ef; border-radius: 50%; z-index: 3; 
+}
+
+.icing .icing-drip {
+    content: '';
+    position: absolute;
+    background: var(--vanilla);
+    width: 30px;
+    height: 30px;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    z-index: 1;
+    box-shadow: 5px 15px 0 25px var(--vanilla), -50px 5px 0 15px var(--vanilla), 60px 10px 0 12px var(--vanilla);
+}
+
+.candles { position: absolute; width: 100%; height: 100%; top: -35px; left: 0; display: flex; justify-content: center; gap: 25px; z-index: 10; }
+.number-candle { position: relative; background: var(--candle-red); height: 60px; }
+.one { width: 20px; border-radius: 3px; }
+.one::before { content: ''; position: absolute; width: 15px; height: 20px; background: var(--candle-red); top: 0; left: -10px; border-radius: 3px; transform: skewX(-30deg); }
+.one::after { content: ''; position: absolute; width: 30px; height: 7px; background: var(--candle-red); bottom: 0; left: -5px; border-radius: 2px; }
+.nine { width: 20px; border-bottom-left-radius: 10px; border-bottom-right-radius: 3px; }
+.nine::before { content: ''; position: absolute; width: 45px; height: 45px; background: var(--candle-red); top: -20px; left: -20px; border-radius: 50%; }
+.nine::after { content: ''; position: absolute; width: 15px; height: 15px; background: #333; top: -8px; left: -7px; border-radius: 50%; z-index: 1; }
+.flame { position: absolute; background-color: orange; width: 15px; height: 35px; border-radius: 10px 10px 10px 10px / 25px 25px 10px 10px; z-index: 11; box-shadow: 0 0 10px rgba(255, 165, 0, 0.5), 0 0 20px rgba(255, 165, 0, 0.5), 0 0 60px rgba(255, 165, 0, 0.5), 0 0 80px rgba(255, 165, 0, 0.5); transform-origin: 50% 90%; animation: flicker 1s ease-in-out alternate infinite; transition: opacity 0.3s ease-out, transform 0.3s ease-out; }
+.smoke { position: absolute; width: 8px; height: 8px; background: #555; border-radius: 50%; opacity: 0; filter: blur(3px); }
+.one .flame { top: -40px; left: 5%; transform: translateX(-50%); }
+.one .smoke { top: -40px; left: 5%; transform: translateX(-50%); }
+.nine .flame { top: -60px; left: -3px; }
+.nine .smoke { top: -65px; left: -3px; }
+@keyframes flicker { 0%{transform:skewX(5deg)}25%{transform:skewX(-5deg)}50%{transform:skewX(10deg)}75%{transform:skewX(-10deg)}100%{transform:skewX(5deg)} }
+
+.cake-container.blown-out .flame { opacity: 0; transform: scaleY(0); }
+.cake-container.blown-out .smoke { animation: smoke-out 2s 0.2s ease-out forwards; }
+@keyframes smoke-out { 0%{transform:translateY(0) scale(1);opacity:0}25%{opacity:0.7}100%{transform:translateY(-40px) scale(3);opacity:0} }
+
+.wish-message { position: absolute; top: -220px; left: 50%; width: 300px; text-align: center; color: #fff; opacity: 0; transform: translateX(-50%) translateY(20px); transition: opacity 2.5s 0.5s ease, transform 2.5s 0.5s ease; z-index: 20;}
+.wish-message p { margin: 0.2em; }
+.cake-container.blown-out .wish-message { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+.present-container { position: absolute; visibility: hidden; opacity: 0; transition: opacity 0.5s ease-in, visibility 0s 1s; z-index: 10; }
+.present-container.visible { visibility: visible; opacity: 1; }
+.present { position: relative; width: 200px; height: 180px; transition: opacity 1s 0.5s ease; }
+.lid { position: absolute; width: 220px; height: 50px; background-color: var(--present-red); top: 0; left: -10px; border-radius: 5px; z-index: 10; transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55); }
+.box { position: absolute; width: 200px; height: 130px; background-color: var(--present-red); top: 50px; border-radius: 5px; z-index: 1; }
+.ribbon-vertical { position: absolute; width: 40px; height: 130px; background-color: var(--present-gold); top: 50px; left: 50%; transform: translateX(-50%); z-index: 3; }
+.present-container.opened .lid { transform: translateY(-350px) rotate(25deg) scale(0.8); }
+.present-container.opened .present { opacity: 0.7; }
+.present-container.opened { cursor: default; }
+
+#fireworks-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 200;
+}
+
+#fireworks-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+}
